@@ -1,0 +1,2 @@
+C:\cygwin64\home\Insight_Arakawa\Projects\Graphics\src\Day2\x64\Debug\Program_Mesh.exe.lastcodeanalysissucceeded
+C:\cygwin64\home\Insight_Arakawa\Projects\Graphics\src\Day2\Program04_1\x64\Debug\NativeCodeAnalysis.read.1.tlog

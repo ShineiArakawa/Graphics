@@ -1,0 +1,13 @@
+﻿  main.cpp
+C:\cygwin64\home\Insight_Arakawa\Projects\Graphics\src\Day1\Program04\main.cpp(110,23): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\cygwin64\home\Insight_Arakawa\Projects\Graphics\src\Day1\Program04\main.cpp(112,15): warning C4244: '初期化中': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\cygwin64\home\Insight_Arakawa\Projects\Graphics\src\Day1\Program04\main.cpp(118,25): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\cygwin64\home\Insight_Arakawa\Projects\Graphics\src\Day1\Program04\main.cpp(119,25): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\cygwin64\home\Insight_Arakawa\Projects\Graphics\src\Day1\Program04\main.cpp(122,34): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\cygwin64\home\Insight_Arakawa\Projects\Graphics\src\Day1\Program04\main.cpp(133,18): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\cygwin64\home\Insight_Arakawa\Projects\Graphics\src\Day1\Program04\main.cpp(134,18): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\cygwin64\home\Insight_Arakawa\Projects\Graphics\src\Day1\Program04\main.cpp(135,20): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\cygwin64\home\Insight_Arakawa\Projects\Graphics\src\Day1\Program04\main.cpp(150,25): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\cygwin64\home\Insight_Arakawa\Projects\Graphics\src\Day1\Program04\main.cpp(151,25): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\cygwin64\home\Insight_Arakawa\Projects\Graphics\src\Day1\Program04\main.cpp(156,34): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+  Program04.vcxproj -> C:\cygwin64\home\Insight_Arakawa\Projects\Graphics\src\Day1\x64\Debug\Program04_0.exe
