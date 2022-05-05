@@ -80,6 +80,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(SolutionDir)\..\..\lib\glad\include;$(SolutionDir)\..\..\lib\glm-0.9.9.8\glm;$(SolutionDir)\..\..\deps\glfw\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)\..\..\deps\glfw\lib-vc2022;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>

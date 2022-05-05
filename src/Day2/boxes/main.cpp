@@ -91,15 +91,15 @@ void paintGL() {
 	for (int i = 0; i < NUM_CUBES_1_DIM; i++) {
 		for (int j = 0; j < NUM_CUBES_1_DIM; j++) {
 			for (int k = 0; k < NUM_CUBES_1_DIM; k++) {
-				float centerX = 2.0 * i;
-				float centerY = 2.0 * j;
-				float centerZ = 2.0 * k;
+				float centerX = 2.5 * i;
+				float centerY = 2.5 * j;
+				float centerZ = 2.5 * k;
 
 				glPushMatrix();
 				glTranslatef(centerX, centerY, centerZ);
 				glRotated(2.0f * theta, 0.0f, 1.0f, 0.0f);
 				glRotatef(theta, 1.0f, 0.0f, 0.0f);
-				//glScalef(0.5f, 0.5f, 0.5f);
+				glScalef(0.5f, 0.5f, 0.5f);
 				drawBox();
 				glPopMatrix();
 			}
