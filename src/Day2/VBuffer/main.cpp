@@ -85,12 +85,12 @@ void initializeGL() {
 
 				for (int face = 0; face < 6; face++) {
 					for (int i = 0; i < 3; i++) {
-						vertices.push_back(Vertex(positions[faces[face * 2 + 0][i]] * 0.25f + centerCoord, colors[face]));
+						vertices.push_back(Vertex(positions[faces[face * 2 + 0][i]] + centerCoord, colors[face]));
 						indices.push_back(idx++);
 					}
 
 					for (int i = 0; i < 3; i++) {
-						vertices.push_back(Vertex(positions[faces[face * 2 + 1][i]] * 0.25f + centerCoord, colors[face]));
+						vertices.push_back(Vertex(positions[faces[face * 2 + 1][i]] + centerCoord, colors[face]));
 						indices.push_back(idx++);
 					}
 				}
