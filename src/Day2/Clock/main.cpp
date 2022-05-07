@@ -76,7 +76,7 @@ void drawHand(const float color[], float width) {
 	};
 
 
-	glBegin(GL_TRIANGLES);
+	glad_glBegin(GL_TRIANGLES);
 
 	glColor3fv(color);
 
@@ -88,7 +88,7 @@ void drawHand(const float color[], float width) {
 		glVertex3fv(handPositions[i + 1]);
 	}
 
-	glEnd();
+	glad_glEnd();
 }
 
 void initializeGL() {

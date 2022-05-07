@@ -1,3 +1,1 @@
-﻿  main.cpp
-LINK : warning LNK4098: defaultlib 'MSVCRT' は他のライブラリの使用と競合しています。/NODEFAULTLIB:library を使用してください。
-  Animation.vcxproj -> D:\GitHub\Graphics\src\Day2\x64\Debug\Animation.exe
+﻿  Animation.vcxproj -> C:\Users\arakawa\Github\Graphics\src\Day2\x64\Debug\Animation.exe

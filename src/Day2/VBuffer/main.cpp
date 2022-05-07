@@ -15,7 +15,7 @@
 static int WIN_WIDTH = 500;                      // ウィンドウの幅 / Window width
 static int WIN_HEIGHT = 500;                     // ウィンドウの高さ / Window height
 static const char* WIN_TITLE = "OpenGL Course";  // ウィンドウのタイトル / Window title
-static const int NUM_CUBES_1_DIM = 50;
+static const int NUM_CUBES_1_DIM = 10;
 static const float SPACE_OF_CUBES = 2.5f;
 static const int NUM_NODES = 36 * NUM_CUBES_1_DIM * NUM_CUBES_1_DIM * NUM_CUBES_1_DIM;
 
@@ -123,12 +123,12 @@ void paintGL() {
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	gluLookAt(500.0f, 500.0f, 500.0f,   // 視点の位置 / Eye position
+	gluLookAt(50.0f, 50.0f, 50.0f,   // 視点の位置 / Eye position
 		0.0f, 0.0f, 0.0f,   // 見ている先 / Looking position
 		0.0f, 1.0f, 0.0f);  // 視界の上方向 / Upward direction
 
 	glPushMatrix();
-	glRotatef(theta, 0.0f, 1.0f, 0.0f);
+	// glRotatef(theta, 0.0f, 1.0f, 0.0f);
 
 	// 頂点バッファの有効化
 	// Enable vertex buffer object
@@ -214,22 +214,34 @@ int main(int argc, char** argv) {
 	initializeGL();
 
 	double startTime, endTime;
+	int counter = 0;
+	const int maxFrame = 100;
+	double sumElapsedTime = 0.0;
 
 	while (glfwWindowShouldClose(window) == GLFW_FALSE) {
+		if (counter >= maxFrame) {
+			break;
+		}
+
 		startTime = glfwGetTime();
 		paintGL();
 		endTime = glfwGetTime();
 
-		if (isRunning) {
-			animate();
-		}
+		// if (isRunning) {
+		// 	animate();
+		// }
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 
 		double elapsedTime = endTime - startTime;
-		std::cout << "elapsedTime= " + std::to_string(elapsedTime) + " [sec]" << std::endl;
+		sumElapsedTime += elapsedTime;
+		std::cout << std::to_string(counter + 1) + ": elapsedTime= " + std::to_string(elapsedTime) + " [sec]" << std::endl;
+		counter++;
 	}
+
+	double avgElapsedTime = sumElapsedTime / (double)counter;
+	std::cout << "avgElapsedTime= " + std::to_string(avgElapsedTime) + " [sec]" << std::endl;
 
 	glfwDestroyWindow(window);
 	glfwTerminate();

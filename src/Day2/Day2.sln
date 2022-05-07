@@ -11,11 +11,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Animation", "Animation\Anim
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Texture", "Texture\Texture.vcxproj", "{1A937A0E-CFC3-4255-B703-7F77C1F4C0E2}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VBuffer_boxes", "VBuffer\VBuffer.vcxproj", "{22D00E08-0DF9-4961-8114-2AD54CAA1FDA}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VBufferBoxes_drawOnce", "VBuffer\VBuffer.vcxproj", "{22D00E08-0DF9-4961-8114-2AD54CAA1FDA}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Clock", "Clock\Clock.vcxproj", "{54FFDAFC-EB27-432C-831C-327A0352F1F8}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boxes", "boxes\boxes.vcxproj", "{7F7E34E2-EBF4-4F9C-B895-3A5AD2A3F67C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VBufferBoxes_drawIteratively", "VBufferBoxes_drawIteratively\VBufferBoxes_drawIteratively.vcxproj", "{676CEF29-1990-4F82-A534-B3A5756F7684}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,14 @@ Global
 		{7F7E34E2-EBF4-4F9C-B895-3A5AD2A3F67C}.Release|x64.Build.0 = Release|x64
 		{7F7E34E2-EBF4-4F9C-B895-3A5AD2A3F67C}.Release|x86.ActiveCfg = Release|Win32
 		{7F7E34E2-EBF4-4F9C-B895-3A5AD2A3F67C}.Release|x86.Build.0 = Release|Win32
+		{676CEF29-1990-4F82-A534-B3A5756F7684}.Debug|x64.ActiveCfg = Debug|x64
+		{676CEF29-1990-4F82-A534-B3A5756F7684}.Debug|x64.Build.0 = Debug|x64
+		{676CEF29-1990-4F82-A534-B3A5756F7684}.Debug|x86.ActiveCfg = Debug|Win32
+		{676CEF29-1990-4F82-A534-B3A5756F7684}.Debug|x86.Build.0 = Debug|Win32
+		{676CEF29-1990-4F82-A534-B3A5756F7684}.Release|x64.ActiveCfg = Release|x64
+		{676CEF29-1990-4F82-A534-B3A5756F7684}.Release|x64.Build.0 = Release|x64
+		{676CEF29-1990-4F82-A534-B3A5756F7684}.Release|x86.ActiveCfg = Release|Win32
+		{676CEF29-1990-4F82-A534-B3A5756F7684}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
