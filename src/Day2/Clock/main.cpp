@@ -18,7 +18,6 @@
 #include <iostream>
 #include <string>
 
-
 static int WIN_WIDTH = 500;                      // ウィンドウの幅 / Window width
 static int WIN_HEIGHT = 500;                     // ウィンドウの高さ / Window height
 static const char* WIN_TITLE = "OpenGL Course";  // ウィンドウのタイトル / Window title
@@ -75,8 +74,8 @@ void drawHand(const float color[], float width) {
 		{ -width / 2.0f, 0.0f, -0.1f }
 	};
 
-
-	glBegin(GL_TRIANGLES);
+	
+	glad_glBegin(GL_TRIANGLES);
 
 	glColor3fv(color);
 
@@ -88,7 +87,7 @@ void drawHand(const float color[], float width) {
 		glVertex3fv(handPositions[i + 1]);
 	}
 
-	glEnd();
+	glad_glEnd();
 }
 
 void initializeGL() {
@@ -129,6 +128,7 @@ void initializeGL() {
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * indices.size(),
 		indices.data(), GL_STATIC_DRAW);
 }
+
 
 void paintGL() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

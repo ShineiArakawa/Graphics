@@ -4,9 +4,16 @@
 #define GLFW_INCLUDE_GLU  // GLUライブラリを使用するのに必要
 #include <GLFW/glfw3.h>
 
+#define _USE_MATH_DEFINES
+#include <math.h>
+
+#include <iostream>
+#include <string>
+
 static int WIN_WIDTH = 500;                      // ウィンドウの幅
 static int WIN_HEIGHT = 500;                     // ウィンドウの高さ
 static const char* WIN_TITLE = "OpenGL Course";  // ウィンドウのタイトル
+static float aspectRatio = (float)WIN_WIDTH / (float)WIN_HEIGHT;
 
 // 立方体の頂点位置
 // Vertex positions of a cube
@@ -49,6 +56,33 @@ static const unsigned int indices[12][3] = {
 };
 // clang-format on
 
+void myPerspective(float angle, float near, float rear) {
+    angle = M_PI * angle / 180.0;
+
+    float height, width;
+
+    if (aspectRatio > 1.0f) {
+        height = 2.0 * std::tan(angle / 2.0) * near;
+        width = height * aspectRatio;
+    }
+    else {
+        width = 2.0 * std::tan(angle / 2.0) * near;
+        height = width / aspectRatio;
+    }
+
+
+    float matrix[16] = { 0 };
+    float depth = rear - near;
+
+    matrix[0] = 2.0 * near / width;
+    matrix[5] = 2.0 * near / height;
+    matrix[10] = -(rear + near) / depth;
+    matrix[11] = -1.0;
+    matrix[14] = -2.0 * rear * near / depth;
+
+    glMultMatrixf(matrix);
+}
+
 // OpenGLの初期化関数
 // OpenGL initialization
 void initializeGL() {
@@ -78,7 +112,8 @@ void paintGL() {
     // 透視投影 / Perspective projection with view frustum
     // glFrustum(-2.0f, 2.0f, -2.0f, 2.0f, 5.0f, 10.0f);
     // 透視投影 / Perspective projection
-    gluPerspective(45.0f, (float)WIN_WIDTH / (float)WIN_HEIGHT, 1.0f, 10.0f);
+    //gluPerspective(45.0f, (float)WIN_WIDTH / (float)WIN_HEIGHT, 1.0f, 10.0f);
+    myPerspective(45.0f, 1.0f, 10.0f);
 
     // モデルビュー変換行列
     // Specify model-view matrix
@@ -129,6 +164,9 @@ void resizeGL(GLFWwindow* window, int width, int height) {
     // ビューポート変換の更新
     // Update viewport transform
     glViewport(0, 0, renderBufferWidth, renderBufferHeight);
+
+    aspectRatio = (float)WIN_WIDTH / (float)WIN_HEIGHT;
+    std::cout << "aspectRatio= " + std::to_string(aspectRatio) << std::endl;
 }
 
 int main(int argc, char** argv) {
