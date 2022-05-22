@@ -1,13 +1,11 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: 中間ディレクトリ (x64\Debug\) に別のプロジェクト (Program04_1.vcxproj) と共有されているファイルが含まれています。これにより、クリーンしてリビルド動作が適切に行われない可能性があります。
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(514,5): warning MSB8028: 中間ディレクトリ (x64\Debug\) に別のプロジェクト (Program04_1.vcxproj) と共有されているファイルが含まれています。これにより、クリーンしてリビルド動作が適切に行われない可能性があります。
   main.cpp
   MeshDrawer.cpp
-C:\cygwin64\home\Insight_Arakawa\Projects\Graphics\src\Day2\Program04_1\MeshDrawer.cpp(52,43): warning C4244: '=': 'double' から '_Ty' への変換です。データが失われる可能性があります。
+D:\GitHub\Graphics\src\Day2\Program04_1\MeshDrawer.cpp(52,43): warning C4244: '=': 'double' から '_Ty' への変換です。データが失われる可能性があります。
           with
           [
               _Ty=float
           ]
-  C/C++ のコード分析を実行しています...
   コードを生成中...
 LINK : warning LNK4098: defaultlib 'MSVCRT' は他のライブラリの使用と競合しています。/NODEFAULTLIB:library を使用してください。
-  Program04_1.vcxproj -> C:\cygwin64\home\Insight_Arakawa\Projects\Graphics\src\Day2\x64\Debug\Program_Mesh.exe
-C:\cygwin64\home\Insight_Arakawa\Projects\Graphics\src\Day2\Program04_1\MeshDrawer.cpp(52): warning C26451: 演算のオーバーフロー: 4 バイトの値に演算子 '-' を使用し、結果を 8 バイトの値にキャストしています。オーバーフローを避けるため、演算子 '-' を呼び出す前に値を幅の広い型にキャストしてください (io.2)。
+  Program04_1.vcxproj -> D:\GitHub\Graphics\src\Day2\x64\Debug\Program_Mesh.exe

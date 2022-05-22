@@ -1,6 +1,3 @@
 ﻿  main.cpp
-C:\cygwin64\home\Insight_Arakawa\Projects\Graphics\lib\glad\include\glad\gl.h(16344,12): warning C4551: 関数呼び出しに引数リストがありません。
-C:\cygwin64\home\Insight_Arakawa\Projects\Graphics\src\Day2\boxes\main.cpp(94,19): warning C4244: '初期化中': 'double' から 'float' への変換です。データが失われる可能性があります。
-C:\cygwin64\home\Insight_Arakawa\Projects\Graphics\src\Day2\boxes\main.cpp(95,19): warning C4244: '初期化中': 'double' から 'float' への変換です。データが失われる可能性があります。
-C:\cygwin64\home\Insight_Arakawa\Projects\Graphics\src\Day2\boxes\main.cpp(96,19): warning C4244: '初期化中': 'double' から 'float' への変換です。データが失われる可能性があります。
-  boxes.vcxproj -> C:\cygwin64\home\Insight_Arakawa\Projects\Graphics\src\Day2\x64\Debug\boxes.exe
+C:\Users\arakawa\Github\Graphics\lib\glad\include\glad\gl.h(16344,12): warning C4551: 関数呼び出しに引数リストがありません。
+  boxes.vcxproj -> C:\Users\arakawa\Github\Graphics\src\Day2\x64\Debug\boxes.exe

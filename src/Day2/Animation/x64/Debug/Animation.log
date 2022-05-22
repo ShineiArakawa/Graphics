@@ -1,6 +1,1 @@
-﻿main_templete.obj : error LNK2005: "void __cdecl initializeGL(void)" (?initializeGL@@YAXXZ) は既に main.obj で定義されています。
-main_templete.obj : error LNK2005: "void __cdecl paintGL(void)" (?paintGL@@YAXXZ) は既に main.obj で定義されています。
-main_templete.obj : error LNK2005: "void __cdecl resizeGL(struct GLFWwindow *,int,int)" (?resizeGL@@YAXPEAUGLFWwindow@@HH@Z) は既に main.obj で定義されています。
-main_templete.obj : error LNK2005: main は既に main.obj で定義されています。
-LINK : warning LNK4098: defaultlib 'MSVCRT' は他のライブラリの使用と競合しています。/NODEFAULTLIB:library を使用してください。
-C:\cygwin64\home\Insight_Arakawa\Projects\Graphics\src\Day2\x64\Debug\Animation.exe : fatal error LNK1169: 1 つ以上の複数回定義されているシンボルが見つかりました。
+﻿  Animation.vcxproj -> C:\Users\arakawa\Github\Graphics\src\Day2\x64\Debug\Animation.exe
