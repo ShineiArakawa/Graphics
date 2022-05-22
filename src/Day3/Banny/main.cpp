@@ -4,6 +4,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <filesystem>
 
 #define GLAD_GL_IMPLEMENTATION
 #include <glad/gl.h>
@@ -38,8 +39,8 @@ static std::string FRAG_SHADER_FILE = std::string(SHADER_DIRECTORY) + "render.fr
 
 // メッシュモデルのファイル
 // Mesh model file
-//static const std::string MESH_FILE = std::string(DATA_DIRECTORY) + "bunny.obj";
-static const std::string MESH_FILE = std::string(DATA_DIRECTORY) + "12_4/teapot.obj";
+static const std::string MESH_FILE = std::string(DATA_DIRECTORY) + "bunny.obj";
+//static const std::string MESH_FILE = std::string(DATA_DIRECTORY) + "12_4/teapot.obj";
 
 // 頂点番号配列の大きさ
 // Length of index array buffer
