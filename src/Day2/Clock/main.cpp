@@ -74,7 +74,7 @@ void drawHand(const float color[], float width) {
 		{ -width / 2.0f, 0.0f, -0.1f }
 	};
 
-	
+
 	glad_glBegin(GL_TRIANGLES);
 
 	glColor3fv(color);

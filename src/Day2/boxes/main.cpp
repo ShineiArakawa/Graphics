@@ -50,7 +50,7 @@ static const unsigned int faces[12][3] = {
 // clang-format on
 
 void drawBox() {
-	glBegin(GL_TRIANGLES);
+	glad_glBegin(GL_TRIANGLES);
 	for (int face = 0; face < 6; face++) {
 		// �ʂ̐F
 		// Face color
@@ -66,7 +66,7 @@ void drawBox() {
 			glVertex3fv(positions[faces[face * 2 + 1][i]]);
 		}
 	}
-	glEnd();
+	glad_glEnd();
 }
 
 void initializeGL() {
@@ -91,15 +91,12 @@ void paintGL() {
 	for (int i = 0; i < NUM_CUBES_1_DIM; i++) {
 		for (int j = 0; j < NUM_CUBES_1_DIM; j++) {
 			for (int k = 0; k < NUM_CUBES_1_DIM; k++) {
-				float centerX = 2.5 * i;
-				float centerY = 2.5 * j;
-				float centerZ = 2.5 * k;
+				float centerX = 2.5f * (float)i;
+				float centerY = 2.5f * (float)j;
+				float centerZ = 2.5f * (float)k;
 
 				glPushMatrix();
 				glTranslatef(centerX, centerY, centerZ);
-				glRotated(2.0f * theta, 0.0f, 1.0f, 0.0f);
-				glRotatef(theta, 1.0f, 0.0f, 0.0f);
-				glScalef(0.5f, 0.5f, 0.5f);
 				drawBox();
 				glPopMatrix();
 			}
@@ -164,21 +161,32 @@ int main(int argc, char** argv) {
 	initializeGL();
 
 	double startTime, endTime;
+	int counter = 0;
+	const int maxFrame = 100;
+	double sumElapsedTime = 0.0;
 
 	while (glfwWindowShouldClose(window) == GLFW_FALSE) {
+		if (counter >= maxFrame) {
+			break;
+		}
 
 		startTime = glfwGetTime();
 		paintGL();
 		endTime = glfwGetTime();
 
-		animate(window);
+		// animate(window);
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 
 		double elapsedTime = endTime - startTime;
-		std::cout << "elapsedTime= " + std::to_string(elapsedTime) + " [sec]" << std::endl;
+		sumElapsedTime += elapsedTime;
+		std::cout << std::to_string(counter+1) + ": elapsedTime= " + std::to_string(elapsedTime) + " [sec]" << std::endl;
+		counter++;
 	}
+
+	double avgElapsedTime = sumElapsedTime / (double)counter;
+	std::cout << "avgElapsedTime= " + std::to_string(avgElapsedTime) + " [sec]" << std::endl;
 
 	glfwDestroyWindow(window);
 	glfwTerminate();
