@@ -1,0 +1,2 @@
+﻿  main.cpp
+C:\cygwin64\home\Insight_Arakawa\Projects\Graphics\src\Day3\ModelLoading\main.cpp(9,10): fatal error C1083: include ファイルを開けません。'glad/gl.h':No such file or directory

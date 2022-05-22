@@ -1,0 +1,46 @@
+#version 460
+
+in vec3 f_positionCameraSpace;
+in vec3 f_normalCameraSpace;
+in vec3 f_lightPosCameraSpace;
+
+out vec4 out_color;
+
+uniform sampler2D u_texture;
+uniform sampler2D u_textureDots;
+uniform sampler2D u_textureLines;
+uniform float u_contourThreshold;
+uniform float u_diffuseThreshold;
+uniform float u_specularThreshold;
+uniform vec2 u_textureSize;
+
+void main() {
+    
+    vec3 V = normalize(-f_positionCameraSpace);
+    vec3 N = normalize(f_normalCameraSpace);
+    vec3 L = normalize(f_lightPosCameraSpace - f_positionCameraSpace);
+    vec3 H = normalize(V + L);
+
+    vec2 uv;
+    uv.x = (gl_FragCoord.x) / 512.0;
+    uv.y = (gl_FragCoord.y) / 512.0;
+
+    float diffuse = clamp(dot(N, L), 0.0, 1.0);
+    float specular  = clamp(dot(N, H), 0.0, 1.0);
+    
+    vec3 rgb;
+    if (abs(N[2]) < u_contourThreshold){
+        rgb[0] = 0.0f;
+        rgb[1] = 0.0f;
+        rgb[2] = 0.0f;
+    } else if (diffuse < u_diffuseThreshold) {
+        rgb = texture(u_textureLines, uv).rgb;
+    } else if (specular > u_specularThreshold) {
+        rgb = texture(u_textureDots, uv).rgb;
+    } else {
+        rgb = texture(u_texture, vec2(diffuse, 0.5)).rgb;
+    }
+
+    out_color = vec4(rgb, 1.0);
+    // out_color = vec4(uv.x, 0.0, 0.0, 1.0);
+}

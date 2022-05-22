@@ -1,0 +1,10 @@
+﻿  main.cpp
+C:\cygwin64\home\Insight_Arakawa\Projects\Graphics\lib\glad\include\glad\gl.h(16344,12): warning C4551: 関数呼び出しに引数リストがありません。
+C:\cygwin64\home\Insight_Arakawa\Projects\Graphics\src\Day3\Banny\main.cpp(126,46): warning C4267: '引数': 'size_t' から '_Ty' に変換しました。データが失われているかもしれません。
+          with
+          [
+              _Ty=uint32_t
+          ]
+C:\cygwin64\home\Insight_Arakawa\Projects\Graphics\src\Day3\Banny\main.cpp(377,69): warning C4267: '引数': 'size_t' から 'GLsizei' に変換しました。データが失われているかもしれません。
+LINK : warning LNK4098: defaultlib 'MSVCRT' は他のライブラリの使用と競合しています。/NODEFAULTLIB:library を使用してください。
+  Banny.vcxproj -> C:\cygwin64\home\Insight_Arakawa\Projects\Graphics\src\Day3\x64\Debug\Banny.exe
