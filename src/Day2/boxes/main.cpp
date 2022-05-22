@@ -50,7 +50,7 @@ static const unsigned int faces[12][3] = {
 // clang-format on
 
 void drawBox() {
-	glBegin(GL_TRIANGLES);
+	glad_glBegin(GL_TRIANGLES);
 	for (int face = 0; face < 6; face++) {
 		// �ʂ̐F
 		// Face color
@@ -66,7 +66,7 @@ void drawBox() {
 			glVertex3fv(positions[faces[face * 2 + 1][i]]);
 		}
 	}
-	glEnd();
+	glad_glEnd();
 }
 
 void initializeGL() {

@@ -91,6 +91,31 @@ void drawHand(const float color[], float width) {
 	glEnd();
 }
 
+void initTexture() {
+	int texWidth, texHeight, channels;
+	unsigned char* bytes = stbi_load(TEX_FILE.c_str(), &texWidth, &texHeight, &channels, STBI_rgb_alpha);
+	if (!bytes) {
+		fprintf(stderr, "Failed to load image file: %s\n", TEX_FILE.c_str());
+		exit(1);
+	}
+
+	glGenTextures(1, &textureId);
+	glBindTexture(GL_TEXTURE_2D, textureId);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, texWidth, texHeight,
+		0, GL_RGBA, GL_UNSIGNED_BYTE, bytes);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+	glGenerateMipmap(GL_TEXTURE_2D);
+
+	glBindTexture(GL_TEXTURE_2D, 0);
+
+	stbi_image_free(bytes);
+}
+
 void initializeGL() {
 	glm::vec3 color = { 1.0f, 1.0f, 1.0f };
 
@@ -266,6 +291,7 @@ int main(int argc, char** argv) {
 
 	// ÉÅÉCÉìÉãÅ[Év
 	while (glfwWindowShouldClose(window) == GLFW_FALSE) {
+		std::exit(1);
 		updateTime();
 		paintGL();
 
