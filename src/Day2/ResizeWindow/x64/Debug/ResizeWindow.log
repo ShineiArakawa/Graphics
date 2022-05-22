@@ -1,8 +1,1 @@
-﻿  main.cpp
-D:\GitHub\Graphics\src\Day2\ResizeWindow\main.cpp(60,26): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-D:\GitHub\Graphics\src\Day2\ResizeWindow\main.cpp(65,46): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-D:\GitHub\Graphics\src\Day2\ResizeWindow\main.cpp(69,45): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-D:\GitHub\Graphics\src\Day2\ResizeWindow\main.cpp(77,28): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-D:\GitHub\Graphics\src\Day2\ResizeWindow\main.cpp(78,28): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-D:\GitHub\Graphics\src\Day2\ResizeWindow\main.cpp(81,37): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-  ResizeWindow.vcxproj -> D:\GitHub\Graphics\src\Day2\x64\Debug\ResizeWindow.exe
+﻿

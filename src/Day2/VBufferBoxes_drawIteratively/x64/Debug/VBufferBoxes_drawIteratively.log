@@ -1,4 +1,1 @@
-﻿  main.cpp
-C:\Users\arakawa\Github\Graphics\lib\glad\include\glad\gl.h(16344,12): warning C4551: 関数呼び出しに引数リストがありません。
-LINK : warning LNK4098: defaultlib 'MSVCRT' は他のライブラリの使用と競合しています。/NODEFAULTLIB:library を使用してください。
-  VBufferBoxes_drawIteratively.vcxproj -> C:\Users\arakawa\Github\Graphics\src\Day2\x64\Debug\VBufferBoxes_drawIteratively.exe
+﻿

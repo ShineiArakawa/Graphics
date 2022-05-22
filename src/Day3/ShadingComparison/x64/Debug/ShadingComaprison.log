@@ -1,6 +1,0 @@
-﻿  main.cpp
-C:\cygwin64\home\Insight_Arakawa\Projects\Graphics\lib\glad\include\glad\gl.h(16344,12): warning C4551: 関数呼び出しに引数リストがありません。
-C:\cygwin64\home\Insight_Arakawa\Projects\Graphics\src\Day3\ShadingComaprison\main.cpp(109,54): warning C4305: '初期化中': 'double' から 'float' へ切り詰めます。
-C:\cygwin64\home\Insight_Arakawa\Projects\Graphics\src\Day3\ShadingComaprison\main.cpp(110,57): warning C4305: '初期化中': 'double' から 'float' へ切り詰めます。
-LINK : warning LNK4098: defaultlib 'MSVCRT' は他のライブラリの使用と競合しています。/NODEFAULTLIB:library を使用してください。
-  ShadingComaprison.vcxproj -> C:\cygwin64\home\Insight_Arakawa\Projects\Graphics\src\Day3\x64\Debug\ShadingComaprison.exe

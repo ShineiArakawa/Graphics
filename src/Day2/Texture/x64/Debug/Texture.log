@@ -1,3 +1,1 @@
-﻿  main.cpp
-D:\GitHub\Graphics\src\Day2\Texture\main.cpp(157,64): warning C4244: '引数': 'double' から 'GLfloat' への変換です。データが失われる可能性があります。
-  Texture.vcxproj -> D:\GitHub\Graphics\src\Day2\x64\Debug\Texture.exe
+﻿
