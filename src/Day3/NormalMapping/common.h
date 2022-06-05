@@ -10,7 +10,7 @@ static const char* SOURCE_DIRECTORY = "D:/Github/Graphics/src/Day3/NormalMapping
 static const char* SHADER_DIRECTORY = "D:/Github/Graphics/src/Day3/NormalMapping/";
 static const char* DATA_DIRECTORY = "D:/Github/Graphics/data/12_4/";
 
-static int                WIN_WIDTH = 2000;
+static int                WIN_WIDTH = 3000;
 static int                WIN_HEIGHT = 2000;
 static const char* WIN_TITLE = "OpenGL Course";
 static const int          FPS = 60;
