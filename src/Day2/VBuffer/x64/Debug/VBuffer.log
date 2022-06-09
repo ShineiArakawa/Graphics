@@ -1,1 +1,5 @@
-﻿
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(514,5): warning MSB8028: 中間ディレクトリ (x64\Debug\) に別のプロジェクト (VBuffer.vcxproj, VBuffer_boxes.vcxproj) と共有されているファイルが含まれています。これにより、クリーンしてリビルド動作が適切に行われない可能性があります。
+  main.cpp
+D:\GitHub\Graphics\lib\glad\include\glad\gl.h(16344,12): warning C4551: 関数呼び出しに引数リストがありません。
+LINK : warning LNK4098: defaultlib 'MSVCRT' は他のライブラリの使用と競合しています。/NODEFAULTLIB:library を使用してください。
+  VBuffer.vcxproj -> D:\GitHub\Graphics\src\Day2\x64\Debug\VBufferBoxes_drawOnce.exe
