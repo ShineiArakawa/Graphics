@@ -26,24 +26,19 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
-//static const char* SOURCE_DIRECTORY = "C:/cygwin64/home/Insight_Arakawa/Projects/Graphics/src/Day3/NormalMapping/";
-//static const char* SHADER_DIRECTORY = "C:/cygwin64/home/Insight_Arakawa/Projects/Graphics/src/Day3/NormalMapping/";
-//static const char* DATA_DIRECTORY = "C:/cygwin64/home/Insight_Arakawa/Projects/Graphics/data/12_4/";
-
-static const char* SOURCE_DIRECTORY = "D:/Github/Graphics/src/Day3/Dice/";
-static const char* SHADER_DIRECTORY = "D:/Github/Graphics/src/Day3/Dice/";
-static const char* DATA_DIRECTORY = "D:/Github/Graphics/data/12_2/";
+#include <filesystem>
 
 static int                WIN_WIDTH = 3000;
 static int                WIN_HEIGHT = 2000;
 static const char* WIN_TITLE = "OpenGL Course";
 static const int          FPS = 60;
 static const float        COEFF_FOR_UV_COORDS = 5.0f;
-static std::string        VERT_SHADER_FILE = std::string(SHADER_DIRECTORY) + "render.vert";
-static std::string        FRAG_SHADER_FILE = std::string(SHADER_DIRECTORY) + "render.frag";
-static const std::string  TEX_FILE = std::string(DATA_DIRECTORY) + "dice.png";
-//static const std::string  TEX_FILE = std::string(DATA_DIRECTORY) + "dots.png";
-//static const std::string  TEX_FILE = std::string(DATA_DIRECTORY) + "lines.png";
+static std::string        VERT_SHADER_FILE = std::filesystem::current_path().string() + "/render.vert";
+static std::string        FRAG_SHADER_FILE = std::filesystem::current_path().string() + "/render.frag";
+static const std::string DATA_DIRECTORY = std::filesystem::current_path().string() + "/../../../data/12_2/";
+//static const std::string  TEX_FILE = DATA_DIRECTORY + "dice.png";
+//static const std::string  TEX_FILE = DATA_DIRECTORY + "dots.png";
+static const std::string  TEX_FILE = DATA_DIRECTORY + "lines.png";
 
 
 
