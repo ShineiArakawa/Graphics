@@ -45,7 +45,7 @@ static std::string FRAG_SHADER_FILE = std::string(SHADER_DIRECTORY) + "render.fr
 static const std::string MESH_FILE = std::string(DATA_DIRECTORY) + "bunny.obj";
 
 static const float contourThreshold = 0.4f;
-static const float diffuseThreshold = 0.45f;
+static const float diffuseThreshold = 0.40f;
 static const float specularThreshold = 0.95f;
 
 static size_t indexBufferSize = 0;

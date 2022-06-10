@@ -21,26 +21,34 @@ void main() {
     vec3 L = normalize(f_lightPosCameraSpace - f_positionCameraSpace);
     vec3 H = normalize(V + L);
 
-    vec2 uv;
-    uv.x = (gl_FragCoord.x) / 512.0;
-    uv.y = (gl_FragCoord.y) / 512.0;
+    vec2 uvScreen;
+    uvScreen.x = (gl_FragCoord.x) / u_textureSize.x;
+    uvScreen.y = -(gl_FragCoord.y) / u_textureSize.y;
 
     float diffuse = clamp(dot(N, L), 0.0, 1.0);
     float specular  = clamp(dot(N, H), 0.0, 1.0);
     
-    vec3 rgb;
+    vec3 rgb = texture(u_texture, vec2(dot(N, L), 0.5)).rgb;
+    
+    // Contour Lines
     if (abs(N[2]) < u_contourThreshold){
         rgb[0] = 0.0f;
         rgb[1] = 0.0f;
         rgb[2] = 0.0f;
-    } else if (diffuse < u_diffuseThreshold) {
-        rgb = texture(u_textureLines, uv).rgb;
-    } else if (specular > u_specularThreshold) {
-        rgb = texture(u_textureDots, uv).rgb;
-    } else {
-        rgb = texture(u_texture, vec2(diffuse, 0.5)).rgb;
+    }
+    // Lines
+    if (diffuse < u_diffuseThreshold) {
+        vec3 rgbLine = texture(u_textureLines, uvScreen).rgb;
+        if (rgbLine.x < 0.5 && rgbLine.y < 0.5 && rgbLine.z < 0.5) {
+            rgb = rgbLine;
+        }
     }
 
+    // Dots
+    if (specular > u_specularThreshold) {
+        rgb += texture(u_textureDots, uvScreen).rgb;
+    }
+
+
     out_color = vec4(rgb, 1.0);
-    // out_color = vec4(uv.x, 0.0, 0.0, 1.0);
 }

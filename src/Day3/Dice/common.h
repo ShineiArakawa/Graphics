@@ -31,14 +31,14 @@
 static int                WIN_WIDTH = 3000;
 static int                WIN_HEIGHT = 2000;
 static const char* WIN_TITLE = "OpenGL Course";
-static const int          FPS = 60;
+static const int          FPS = 120;
 static const float        COEFF_FOR_UV_COORDS = 5.0f;
 static std::string        VERT_SHADER_FILE = std::filesystem::current_path().string() + "/render.vert";
 static std::string        FRAG_SHADER_FILE = std::filesystem::current_path().string() + "/render.frag";
 static const std::string DATA_DIRECTORY = std::filesystem::current_path().string() + "/../../../data/12_2/";
-//static const std::string  TEX_FILE = DATA_DIRECTORY + "dice.png";
+static const std::string  TEX_FILE = DATA_DIRECTORY + "dice.png";
 //static const std::string  TEX_FILE = DATA_DIRECTORY + "dots.png";
-static const std::string  TEX_FILE = DATA_DIRECTORY + "lines.png";
+//static const std::string  TEX_FILE = DATA_DIRECTORY + "lines.png";
 
 
 
