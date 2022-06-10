@@ -41,7 +41,7 @@ void main() {
         vec3 N = normalize(f_normalCameraSpace);
         shade(N, L, H);
     } else if (u_algorithmID == 2) {
-       
+       out_color = rgb;
     } 
     else  {
         normalShading();
