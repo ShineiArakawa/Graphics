@@ -56,9 +56,9 @@ void TransformVariable::_init() {
 	_projMat = glm::perspective(glm::radians(45.0f), (float)*_windowWidth / (float)*_windowHeight, 0.1f, 1000.0f);
 
 	_viewMat = glm::lookAt(
-		glm::vec3(3.0f, 4.0f, 5.0f),   // ‹“_‚ÌˆÊ’u / Eye position
-		glm::vec3(0.0f, 0.0f, 0.0f),   // Œ©‚Ä‚¢‚éæ / Looking position
-		glm::vec3(0.0f, 1.0f, 0.0f)    // ‹ŠE‚Ìã•ûŒü / Upward vector
+		glm::vec3(3.0f, 4.0f, 5.0f),
+		glm::vec3(0.0f, 0.0f, 0.0f),
+		glm::vec3(0.0f, 1.0f, 0.0f)
 	);
 
 	_acScale = 1.0f;
@@ -184,6 +184,8 @@ glm::mat4 Parameters::getMvpMat(int index)
 	if (index >= 0 && index < _values.size()) {
 		return _values[index].getMvpMat();
 	}
+
+	return glm::mat4(0.0);
 }
 
 void Parameters::setProjMat(glm::mat4 projMat)

@@ -3,7 +3,7 @@
 
 // clang-format off
 // ============================================================================
-// 立方体の定義 ===============================================================
+// ????????` ===============================================================
 // ============================================================================
 static const glm::vec3 positions[8] = {
 	glm::vec3(-1.0f, -1.0f, -1.0f), //0
@@ -114,7 +114,7 @@ void initTexture() {
 }
 
 void initVAO() {
-	// Vertex配列の作成
+	// Vertex?z????
 	std::vector<Vertex> vertices;
 	std::vector<unsigned int> indices;
 	int idx = 0;
@@ -140,7 +140,7 @@ void initVAO() {
 		}
 	}
 
-	// VAOの作成
+	// VAO???
 	glGenVertexArrays(1, &vaoId);
 	glBindVertexArray(vaoId);
 
@@ -171,50 +171,50 @@ void initVAO() {
 }
 
 
-// シェーダの初期化
+// ?V?F?[?_???????
 // Initialization related to shader programs
 void initShaders() {
 	programId = buildShaderProgram(VERT_SHADER_FILE, FRAG_SHADER_FILE);
 }
 
-// ユーザ定義のOpenGLの初期化
+// ???[?U??`??OpenGL???????
 // User-define OpenGL initialization
 void initializeGL() {
-	// 深度テストの有効化
+	// ?[?x?e?X?g??L????
 	// Enable depth testing
 	glEnable(GL_DEPTH_TEST);
 
-	// 背景色の設定 (黒)
+	// ?w?i?F???? (??)
 	// Background color (black)
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
-	// VAOの初期化
+	// VAO???????
 	// Initialize VAO
 	initVAO();
 
-	// シェーダの用意
+	// ?V?F?[?_??p??
 	// Prepare shader program
 	initShaders();
 
 	initTexture();
 }
 
-// ユーザ定義のOpenGL描画
+// ???[?U??`??OpenGL?`??
 // User-defined OpenGL drawing
 void paintGL() {
-	// 背景色と深度値のクリア
+	// ?w?i?F??[?x?l??N???A
 	// Clear background color and depth values
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	// 座標の変換
+	// ???W????
 	// Coordinate transformation
 	glm::mat4 projMat = glm::perspective(glm::radians(45.0f),
 		(float)WIN_WIDTH / (float)WIN_HEIGHT, 0.1f, 1000.0f);
 
 	glm::mat4 viewMat = glm::lookAt(
-		glm::vec3(3.0f, 4.0f, 5.0f),   // 視点の位置
-		glm::vec3(0.0f, 0.0f, 0.0f),   // 見ている先
-		glm::vec3(0.0f, 1.0f, 0.0f)    // 視界の上方向
+		glm::vec3(3.0f, 4.0f, 5.0f),   // ???_???u
+		glm::vec3(0.0f, 0.0f, 0.0f),   // ????????
+		glm::vec3(0.0f, 1.0f, 0.0f)    // ???E??????
 	);
 
 	modelMat1 = glm::rotate(glm::radians(theta), glm::vec3(0.0f, 1.0f, 0.0f));
@@ -225,11 +225,11 @@ void paintGL() {
 	normMat = glm::transpose(glm::inverse(mvMat));
 	lightMat = viewMat;
 
-	// シェーダの有効化
+	// ?V?F?[?_??L????
 	// Enable shader program
 	glUseProgram(programId);
 
-	// VAOの有効化
+	// VAO??L????
 	// Enable VAO
 	glBindVertexArray(vaoId);
 
@@ -273,52 +273,52 @@ void paintGL() {
 	glUseProgram(0);
 }
 
-// ウィンドウサイズ変更のコールバック関数
+// ?E?B???h?E?T?C?Y??X??R?[???o?b?N???
 // Callback function for window resizing
 void resizeGL(GLFWwindow* window, int width, int height) {
-	// ユーザ管理のウィンドウサイズを変更
+	// ???[?U?????E?B???h?E?T?C?Y???X
 	// Update user-managed window size
 	WIN_WIDTH = width;
 	WIN_HEIGHT = height;
 
-	// GLFW管理のウィンドウサイズを変更
+	// GLFW?????E?B???h?E?T?C?Y???X
 	// Update GLFW-managed window size
 	glfwSetWindowSize(window, WIN_WIDTH, WIN_HEIGHT);
 
-	// 実際のウィンドウサイズ (ピクセル数) を取得
+	// ?????E?B???h?E?T?C?Y (?s?N?Z????) ???擾
 	// Get actual window size by pixels
 	int renderBufferWidth, renderBufferHeight;
 	glfwGetFramebufferSize(window, &renderBufferWidth, &renderBufferHeight);
 
-	// ビューポート変換の更新
+	// ?r???[?|?[?g?????X?V
 	// Update viewport transform
 	glViewport(0, 0, renderBufferWidth, renderBufferHeight);
 }
 
-// マウスのクリックを処理するコールバック関数
+// ?}?E?X??N???b?N??????????R?[???o?b?N???
 // Callback for mouse click events
 void mouseEvent(GLFWwindow* window, int button, int action, int mods) {
 	if (action == GLFW_PRESS) {
-		// クリックされた位置を取得
+		// ?N???b?N??????u???擾
 		// Obtain click position
 		double px, py;
 		glfwGetCursorPos(window, &px, &py);
 		const int cx = (int)px;
 		const int cy = (int)py;
 
-		// 選択モードでの描画
+		// ?I?????[?h???`??
 		// Draw cubes with selection mode
 		selectMode = true;
 		paintGL();
 		selectMode = false;
 
-		// ピクセルの大きさの計算 (Macの場合には必要)
+		// ?s?N?Z?????????v?Z (Mac??????K?v)
 		// Calculate pixel size (required for Mac)
 		int renderBufferWidth, renderBufferHeight;
 		glfwGetFramebufferSize(window, &renderBufferWidth, &renderBufferHeight);
 		int pixelSize = std::max(renderBufferWidth / WIN_WIDTH, renderBufferHeight / WIN_HEIGHT);
 
-		// より適切なやり方 (1ピクセルだけを読む)
+		// ???K?????? (1?s?N?Z??????????)
 		// Appropriate buffer access (read only a single pixel)
 		unsigned char byte[4];
 		glReadPixels(cx * pixelSize, (WIN_HEIGHT - cy - 1) * pixelSize, 1, 1, GL_RGBA, GL_UNSIGNED_BYTE, byte);
@@ -328,27 +328,27 @@ void mouseEvent(GLFWwindow* window, int button, int action, int mods) {
 	}
 }
 
-// アニメーションのためのアップデート
+// ?A?j???[?V??????????A?b?v?f?[?g
 // Update parameters for animation
 void animate() {
-	theta += 1.0f;  // 1度だけ回転 / Rotate 1 degree of angle
+	theta += 1.0f;  // 1?x??????] / Rotate 1 degree of angle
 }
 
 int main(int argc, char** argv) {
-	// OpenGLを初期化する
+	// OpenGL????????????
 	// OpenGL initialization
 	if (glfwInit() == GLFW_FALSE) {
 		fprintf(stderr, "Initialization failed!\n");
 		return 1;
 	}
 
-	// OpenGLのバージョン設定 (Macの場合には必ず必要)
+	// OpenGL??o?[?W??????? (Mac??????K???K?v)
 	// Specify OpenGL version (mandatory for Mac)
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	// Windowの作成
+	// Window???
 	// Create a window
 	GLFWwindow* window = glfwCreateWindow(WIN_WIDTH, WIN_HEIGHT, WIN_TITLE,
 		NULL, NULL);
@@ -358,11 +358,11 @@ int main(int argc, char** argv) {
 		return 1;
 	}
 
-	// OpenGLの描画対象にwindowを指定
+	// OpenGL??`?????window???w??
 	// Specify window as an OpenGL context
 	glfwMakeContextCurrent(window);
 
-	// OpenGL 3.x/4.xの関数をロードする (glfwMakeContextCurrentの後でないといけない)
+	// OpenGL 3.x/4.x?????????[?h???? (glfwMakeContextCurrent??????????????)
 	// Load OpenGL 3.x/4.x methods (must be loaded after "glfwMakeContextCurrent")
 	const int version = gladLoadGL(glfwGetProcAddress);
 	if (version == 0) {
@@ -370,22 +370,22 @@ int main(int argc, char** argv) {
 		return 1;
 	}
 
-	// バージョンを出力する / Check OpenGL version
+	// ?o?[?W???????o????? / Check OpenGL version
 	printf("Load OpenGL %d.%d\n", GLAD_VERSION_MAJOR(version), GLAD_VERSION_MINOR(version));
 
-	// ウィンドウのリサイズを扱う関数の登録
+	// ?E?B???h?E????T?C?Y???????????o?^
 	// Register a callback function for window resizing
 	glfwSetWindowSizeCallback(window, resizeGL);
 
-	// マウスのイベントを処理する関数を登録
+	// ?}?E?X??C?x???g??????????????o?^
 	// Register a callback function for mouse click events
 	glfwSetMouseButtonCallback(window, mouseEvent);
 
-	// ユーザ指定の初期化
+	// ???[?U?w????????
 	// User-specified initialization
 	initializeGL();
 
-	// メインループ
+	// ???C?????[?v
 	double prevTime, currentTime, diffTime;
 	prevTime = glfwGetTime();
 	while (glfwWindowShouldClose(window) == GLFW_FALSE) {
@@ -395,10 +395,10 @@ int main(int argc, char** argv) {
 
 			paintGL();
 
-			// アニメーション / Animation
+			// ?A?j???[?V???? / Animation
 			animate();
 
-			// 描画用バッファの切り替え
+			// ?`??p?o?b?t?@??????
 			// Swap drawing target buffers
 			glfwSwapBuffers(window);
 			glfwPollEvents();
@@ -407,7 +407,7 @@ int main(int argc, char** argv) {
 		}
 	}
 
-	// 後処理 / Postprocess
+	// ???? / Postprocess
 	glfwDestroyWindow(window);
 	glfwTerminate();
 }
