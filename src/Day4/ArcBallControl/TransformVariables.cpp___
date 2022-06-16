@@ -1,0 +1,114 @@
+#include "TransformVariables.h"
+
+TransVariables::TransVariables(int* windowWidth, int* windowHeight) {
+	_windowWidth = windowWidth;
+	_windowHeight = windowHeight;
+
+	_init();
+}
+
+TransVariables::~TransVariables() {
+
+}
+
+void TransVariables::_init() {
+	_projMat = glm::perspective(glm::radians(45.0f), (float)*_windowWidth / (float)*_windowHeight, 0.1f, 1000.0f);
+
+	_viewMat = glm::lookAt(
+		glm::vec3(3.0f, 4.0f, 5.0f),   // 視点の位置 / Eye position
+		glm::vec3(0.0f, 0.0f, 0.0f),   // 見ている先 / Looking position
+		glm::vec3(0.0f, 1.0f, 0.0f)    // 視界の上方向 / Upward vector
+	);
+
+	_acScale = 1.0f;
+	_acRotMat = glm::mat4(1.0);
+	_acTransMat = glm::mat4(1.0);
+	_acScaleMat = glm::mat4(1.0);
+}
+
+glm::mat4 TransVariables::_getModelMat() {
+	return _acTransMat * _acRotMat * _acScaleMat;
+}
+
+glm::mat4 TransVariables::getMvpMat() {
+	glm::mat4 modelMat = _getModelMat();
+	return _projMat * _viewMat * modelMat;
+}
+
+void TransVariables::setProjMat(glm::mat4 projMat) {
+	_projMat = projMat;
+}
+
+// スクリーン上の位置をアークボール球上の位置に変換する関数
+glm::vec3 TransVariables::_getVector(double x, double y) {
+	const int shortSide = std::min(*_windowWidth, *_windowHeight);
+	glm::vec3 pt(2.0f * x / (float)shortSide - 1.0f, -2.0f * y / (float)shortSide + 1.0f, 0.0f);
+
+	const double xySquared = pt.x * pt.x + pt.y * pt.y;
+	if (xySquared <= 1.0) {
+		pt.z = std::sqrt(1.0 - xySquared);
+	}
+	else {
+		pt = glm::normalize(pt);
+	}
+
+	return pt;
+}
+
+// 回転成分の更新
+void TransVariables::updateRotate(glm::vec2 oldPos, glm::vec2 newPos) {
+	const glm::vec3 u = _getVector(oldPos.x, oldPos.y);
+	const glm::vec3 v = _getVector(newPos.x, newPos.y);
+
+	// カメラ座標における回転量 (=世界座標における回転量)
+	const double angle = std::acos(std::max(-1.0f, std::min(glm::dot(u, v), 1.0f)));
+
+	// カメラ空間における回転軸
+	const glm::vec3 rotAxis = glm::cross(u, v);
+
+	// カメラ座標の情報を世界座標に変換する行列
+	const glm::mat4 c2wMat = glm::inverse(_viewMat);
+
+	// 世界座標における回転軸
+	const glm::vec3 rotAxisWorldSpace = glm::vec3(c2wMat * glm::vec4(rotAxis, 0.0f));
+
+	// 回転行列の更新
+	_acRotMat = glm::rotate((float)(4.0 * angle), rotAxisWorldSpace) * _acRotMat;
+}
+
+void TransVariables::updateTranslate(glm::vec2 oldPos, glm::vec2 newPos) {
+	// NOTE:
+	// この関数では物体が世界座標の原点付近にあるとして平行移動量を計算する
+	// This function assumes the object locates near to the world-space origin and computes the amount of translation
+
+	// 世界座標の原点のスクリーン座標を求める
+	glm::vec4 originScreenSpace = (_projMat * _viewMat) * glm::vec4(0.0f, 0.0f, 0.0f, 1.0f);
+	originScreenSpace /= originScreenSpace.w;
+
+	// スクリーン座標系におけるマウス移動の視点と終点の計算. これらの位置はスクリーン座標系のZ座標に依存することに注意する
+	glm::vec4 newPosScreenSpace(2.0f * newPos.x / *_windowWidth - 1.0f, -2.0f * newPos.y / *_windowHeight + 1.0f, originScreenSpace.z, 1.0f);
+	glm::vec4 oldPosScreenSpace(2.0f * oldPos.x / *_windowWidth - 1.0f, -2.0f * oldPos.y / *_windowHeight + 1.0f, originScreenSpace.z, 1.0f);
+
+	// スクリーン座標の情報を世界座標座標に変換する行列 (= MVP行列の逆行列)
+	glm::mat4 invMvpMat = glm::inverse(_projMat * _viewMat);
+
+	// スクリーン空間の座標を世界座標に変換
+	glm::vec4 newPosObjSpace = invMvpMat * newPosScreenSpace;
+	glm::vec4 oldPosObjSpace = invMvpMat * oldPosScreenSpace;
+	newPosObjSpace /= newPosObjSpace.w;
+	oldPosObjSpace /= oldPosObjSpace.w;
+
+	// 世界座標系で移動量を求める
+	const glm::vec3 transWorldSpace = glm::vec3(newPosObjSpace - oldPosObjSpace);
+
+	// 行列に変換
+	_acTransMat = glm::translate(transWorldSpace) * _acTransMat;
+}
+
+void TransVariables::updateScale() {
+	_acScaleMat = glm::scale(glm::vec3(_acScale, _acScale, _acScale));
+}
+
+void TransVariables::addScale(float diff) {
+	_acScale += diff;
+}
