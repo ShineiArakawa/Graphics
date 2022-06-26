@@ -18,7 +18,7 @@ out vec2 f_texCoord;
 out vec3 f_positionCameraSpace;
 out vec3 f_normalCameraSpace;
 out vec3 f_lightPosCameraSpace;
-out float f_faceGroupID;
+flat out float f_faceGroupID;
 
 void main() {
     f_texCoord = in_uv;

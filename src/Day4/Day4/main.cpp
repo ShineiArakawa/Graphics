@@ -416,10 +416,7 @@ void mouseEvent(GLFWwindow* window, int button, int action, int mods) {
 		double px, py;
 		glfwGetCursorPos(window, &px, &py);
 		printf("Drag start at: (%d, %d)\n", (int)px, (int)py);
-		char strButton;
-		if (button == GLFW_MOUSE_BUTTON_LEFT) {
-
-		}
+		
 		printMouseButton(button);
 	}
 
@@ -432,20 +429,20 @@ void mouseEvent(GLFWwindow* window, int button, int action, int mods) {
 		printMouseButton(button);
 	}
 
-	//// 特殊キーが押されているかの判定
-	//// Check special keys are pressed
-	//int specialKeys[] = { GLFW_MOD_SHIFT, GLFW_MOD_CONTROL, GLFW_MOD_ALT, GLFW_MOD_SUPER };
-	//const char* specialKeyNames[] = { "Shift", "Ctrl", "Alt", "Super" };
+	// 特殊キーが押されているかの判定
+	// Check special keys are pressed
+	int specialKeys[] = { GLFW_MOD_SHIFT, GLFW_MOD_CONTROL, GLFW_MOD_ALT, GLFW_MOD_SUPER };
+	const char* specialKeyNames[] = { "Shift", "Ctrl", "Alt", "Super" };
 
-	//// 特殊キーの状態を標準出力
-	//// Standard output for special key states
-	//printf("Special Keys: ");
-	//for (int i = 0; i < 4; i++) {
-	//    if ((mods & specialKeys[i]) != 0) {
-	//        printf("%s ", specialKeyNames[i]);
-	//    }
-	//}
-	//printf("\n");
+	// 特殊キーの状態を標準出力
+	// Standard output for special key states
+	printf("Special Keys: ");
+	for (int i = 0; i < 4; i++) {
+	    if ((mods & specialKeys[i]) != 0) {
+	        printf("%s ", specialKeyNames[i]);
+	    }
+	}
+	printf("\n");
 }
 
 // マウスの動きを処理するコールバック関数
@@ -455,6 +452,8 @@ void motionEvent(GLFWwindow* window, double px, double py) {
 		if (isDragging) {
 			printf("Move: (%d, %d)\n", (int)px, (int)py);
 		}
+		std::string strIsDragging = isDragging ? "True" : "False";
+		std::cout << "isDragging: " + strIsDragging << std::endl;
 	}
 }
 
