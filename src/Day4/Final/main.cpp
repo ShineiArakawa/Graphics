@@ -1,4 +1,6 @@
+#ifndef _COMMON_H_
 #include "common.h"
+#endif
 #include "Model.h"
 #include "ParticleModel.h"
 

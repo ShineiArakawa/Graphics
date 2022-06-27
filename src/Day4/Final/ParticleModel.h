@@ -1,10 +1,17 @@
 #pragma once
 #ifndef _PARTICLE_MODEL_
 #define _PARTICLE_MODEL_
+
+#ifndef _COMMON_H_
 #include "common.h"
+#endif
+
 #ifndef _MODEL_H_
 #include "Model.h"
 #endif
+
+#include "Physics.h"
+
 #include <sstream>
 #include <boost/algorithm/string.hpp>
 #include <boost/algorithm/string_regex.hpp>
@@ -18,7 +25,10 @@ private:
 	static const int NUM_DIVISIONS_THETA = 100;
 	static const int NUM_DIVISIONS_PHI = 100;
 	const float COEFFI_VELOCITY = 10.0f;
-	const float RHO = 1.0f;
+	const float RHO = 100.0f;
+	const float TIME_SPAN = 0.001f;
+
+	Physics* _physics = nullptr;
 
 	int _nParticles;
 	std::vector<glm::vec3> _coords;
@@ -37,7 +47,6 @@ private:
 
 	void _readFile(std::string);
 	void _cartecian2Polar(glm::vec3&, float, float, float);
-	void _update();
 
 public:
 	ParticleModel(GLuint*, std::string);
@@ -61,6 +70,10 @@ struct Vertex {
 ParticleModel::ParticleModel(GLuint* programId, std::string filePath) {
 	_programId = programId;
 	_readFile(filePath);
+
+	_physics = new Physics(&_coords, &_velocity, &_mass, &_radiuses);
+	_physics->setBox(20.0f, glm::vec3(0));
+	_physics->setTimeSpan(TIME_SPAN);
 }
 
 void ParticleModel::_readFile(std::string filePath) {
@@ -76,11 +89,9 @@ void ParticleModel::_readFile(std::string filePath) {
 	for (int i = 0; i < _nParticles; i++) {
 		std::getline(file, line);
 		boost::trim(line);
-		auto re = boost::regex("[\s]+");
-		//boost::split_regex(tokens, line, re);
 		boost::split(tokens, line, boost::is_any_of(" "), boost::token_compress_on);
 
-		float radius = std::stof(tokens[3]);
+		/*float radius = std::stof(tokens[3]);
 		_radiuses.push_back(radius);
 		glm::vec3 coord;
 		coord.x = std::stof(tokens[4]);
@@ -95,6 +106,24 @@ void ParticleModel::_readFile(std::string filePath) {
 		_velocity.push_back(velocity);
 
 		float mass = 4.0f / 3.0f * M_PI * radius * radius * radius * RHO;
+		_mass.push_back(mass);*/
+
+		float radius = std::stof(tokens[0]);
+		_radiuses.push_back(radius);
+
+		glm::vec3 coord;
+		coord.x = std::stof(tokens[1]);
+		coord.y = std::stof(tokens[2]);
+		coord.z = std::stof(tokens[3]);
+		_coords.push_back(coord);
+
+		glm::vec3 velocity;
+		velocity.x = std::stof(tokens[4]);
+		velocity.y = std::stof(tokens[5]);
+		velocity.z = std::stof(tokens[6]);
+		_velocity.push_back(velocity);
+
+		float mass = 4.0f / 3.0f * M_PI * radius * radius * radius * RHO;
 		_mass.push_back(mass);
 	}
 }
@@ -103,11 +132,6 @@ void ParticleModel::_cartecian2Polar(glm::vec3& vec, float radius, float theta, 
 	vec[0] = radius * std::sin(theta) * std::cos(phi);
 	vec[1] = radius * std::sin(theta) * std::sin(phi);
 	vec[2] = radius * std::cos(theta);
-}
-
-void ParticleModel::_update()
-{
-
 }
 
 void ParticleModel::initVAO() {
@@ -187,6 +211,8 @@ void ParticleModel::initVAO() {
 }
 
 void ParticleModel::paintGL() {
+	_physics->update();
+
 	glUseProgram(*_programId);
 	glm::mat4 modelMat = _acTransMat * _acRotMat * _acScaleMat;
 	for (int i = 0; i < _vaoIDs.size(); i++) {

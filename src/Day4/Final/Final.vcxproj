@@ -144,7 +144,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Box.cpp_____">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Physics.cpp____">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</DeploymentContent>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="render.frag">
@@ -155,9 +162,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Box.h" />
     <ClInclude Include="common.h" />
+    <ClInclude Include="Environ.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="ParticleModel.h" />
+    <ClInclude Include="Physics.h" />
     <ClInclude Include="TransformVariables.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
