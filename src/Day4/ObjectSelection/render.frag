@@ -1,4 +1,4 @@
-#version 460
+#version 330
 
 // Input Variables ======================================================
 in vec2 f_texCoord;
@@ -32,11 +32,11 @@ vec4 shade(vec3 V, vec3 N, vec3 L, vec3 H, vec3 texRGB) {
 
 void main() {
     if (u_selectMode > 0.5) {
-        // ‘I‘ğ‚ÌID‚ª0‚æ‚è‘å‚«‚¢ => ‘I‘ğƒ‚[ƒh, ID‚Å•`‰æ‚·‚é
+        // ï¿½Iï¿½ï¿½ï¿½ï¿½IDï¿½ï¿½0ï¿½ï¿½ï¿½å‚«ï¿½ï¿½ => ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½h, IDï¿½Å•`ï¿½æ‚·ï¿½ï¿½
         float c = float(f_faceGroupID + 1.0) / 255.0;
         out_color = vec4(c, c, c, 1.0);
     } else {
-        // ID‚ª0‚æ‚è¬‚³‚¢ => •`‰æƒ‚[ƒh, ’Êí‚ÌF‚ğg‚¤
+        // IDï¿½ï¿½0ï¿½ï¿½è¬ï¿½ï¿½ï¿½ï¿½ => ï¿½`ï¿½æƒ‚ï¿½[ï¿½h, ï¿½Êï¿½ÌFï¿½ï¿½ï¿½gï¿½ï¿½
         vec3 texRGB = texture(u_texture, f_texCoord).rgb;
     
         vec3 V = normalize(-f_positionCameraSpace);

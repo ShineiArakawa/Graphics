@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="Darwin-clang++"
+	BuildStamp="20220616-1732-Experimental"
+	Name="Shinei-MBP.local"
+	Generator="ctest-3.22.2"
+	CompilerName="/usr/bin/clang++"
+	CompilerVersion="11.0.3.11030032"
+	OSName="macOS"
+	Hostname="Shinei-MBP.local"
+	OSRelease="12.0.1"
+	OSVersion="21A559"
+	OSPlatform="x86_64"
+	Is64Bits="1"
+	VendorString="GenuineIntel"
+	VendorID="Intel Corporation"
+	FamilyID="6"
+	ModelID="158"
+	ProcessorCacheSize="32768"
+	NumberOfLogicalCPU="8"
+	NumberOfPhysicalCPU="4"
+	TotalVirtualMemory="1024"
+	TotalPhysicalMemory="16384"
+	LogicalProcessorsPerPhysical="8"
+	ProcessorClockFrequency="2800"
+	>
+	<Testing>
+		<StartDateTime>Jun 17 02:32 JST</StartDateTime>
+		<StartTestTime>1655400767</StartTestTime>
+		<TestList/>
+		<EndDateTime>Jun 17 02:32 JST</EndDateTime>
+		<EndTestTime>1655400767</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>
