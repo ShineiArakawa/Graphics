@@ -1,4 +1,7 @@
 #include "TransformVariables.h"
+#ifndef _COMMON_H_
+#include "common.h"
+#endif
 
 // clang-format off
 static const glm::vec3 positions[8] = {

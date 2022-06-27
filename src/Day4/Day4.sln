@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ArcBallControl", "ArcBallCo
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ArcBallControl_Temp", "ArcBallControl_Temp\ArcBallControl_Temp.vcxproj", "{5A924B02-847D-40CD-B1E1-CD74F04A0FAE}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Final", "Final\Final.vcxproj", "{7922515B-9538-493A-AEC5-3FE672B5635C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		d|x64 = d|x64
@@ -69,6 +71,16 @@ Global
 		{5A924B02-847D-40CD-B1E1-CD74F04A0FAE}.Release|x64.Build.0 = Release|x64
 		{5A924B02-847D-40CD-B1E1-CD74F04A0FAE}.Release|x86.ActiveCfg = Release|Win32
 		{5A924B02-847D-40CD-B1E1-CD74F04A0FAE}.Release|x86.Build.0 = Release|Win32
+		{7922515B-9538-493A-AEC5-3FE672B5635C}.d|x64.ActiveCfg = Debug|x64
+		{7922515B-9538-493A-AEC5-3FE672B5635C}.d|x86.ActiveCfg = Debug|Win32
+		{7922515B-9538-493A-AEC5-3FE672B5635C}.Debug|x64.ActiveCfg = Debug|x64
+		{7922515B-9538-493A-AEC5-3FE672B5635C}.Debug|x64.Build.0 = Debug|x64
+		{7922515B-9538-493A-AEC5-3FE672B5635C}.Debug|x86.ActiveCfg = Debug|Win32
+		{7922515B-9538-493A-AEC5-3FE672B5635C}.Debug|x86.Build.0 = Debug|Win32
+		{7922515B-9538-493A-AEC5-3FE672B5635C}.Release|x64.ActiveCfg = Release|x64
+		{7922515B-9538-493A-AEC5-3FE672B5635C}.Release|x64.Build.0 = Release|x64
+		{7922515B-9538-493A-AEC5-3FE672B5635C}.Release|x86.ActiveCfg = Release|Win32
+		{7922515B-9538-493A-AEC5-3FE672B5635C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

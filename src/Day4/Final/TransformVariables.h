@@ -1,6 +1,4 @@
-/*
-* This is header header only module.
-*/
+#include "TransformVariables.h"
 #pragma once
 
 #ifndef _COMMON_H_
@@ -34,6 +32,7 @@ private:
 	std::vector<TransformVariable> _values;
 
 public:
+	Parameters();
 	Parameters(std::vector<glm::vec3>, int*, int*);
 	~Parameters();
 	void updateRotate(int, glm::ivec2, glm::ivec2);
@@ -61,9 +60,9 @@ void TransformVariable::_init() {
 	_projMat = glm::perspective(glm::radians(45.0f), (float)*_windowWidth / (float)*_windowHeight, 0.1f, 1000.0f);
 
 	_viewMat = glm::lookAt(
-		glm::vec3(3.0f, 4.0f, 5.0f),
-		glm::vec3(0.0f, 0.0f, 0.0f),
-		glm::vec3(0.0f, 1.0f, 0.0f)
+		glm::vec3(3.0f, 4.0f, 5.0f),   // éãì_ÇÃà íu / Eye position
+		glm::vec3(0.0f, 0.0f, 0.0f),   // å©ÇƒÇ¢ÇÈêÊ / Looking position
+		glm::vec3(0.0f, 1.0f, 0.0f)    // éãäEÇÃè„ï˚å¸ / Upward vector
 	);
 
 	_acScale = 1.0f;
@@ -97,7 +96,8 @@ void TransformVariable::updateRotate(glm::ivec2 oldPos, glm::ivec2 newPos) {
 	const glm::vec3 rotAxis = glm::cross(u, v);
 
 	glm::mat4 modelMat = _acTransMat * _acRotMat * _acScaleMat;
-	const glm::mat4 c2mMat = glm::inverse(modelMat * _viewMat);
+	const glm::mat4 c2mMat = glm::inverse(modelMat) + glm::inverse(_viewMat);
+
 	const glm::vec3 rotAxisModelSpace = glm::vec3(c2mMat * glm::vec4(rotAxis, 0.0f));
 
 	_acRotMat = glm::translate(_centerCoord) * glm::rotate((float)(4.0 * angle), rotAxisModelSpace) * glm::translate(-_centerCoord) * _acRotMat;
@@ -110,10 +110,10 @@ void TransformVariable::updateTranslate(glm::ivec2 oldPos, glm::ivec2 newPos) {
 	glm::vec4 newPosScreenSpace(2.0f * (newPos).x / *_windowWidth - 1.0f, -2.0f * (newPos).y / *_windowHeight + 1.0f, originScreenSpace.z, 1.0f);
 	glm::vec4 oldPosScreenSpace(2.0f * (oldPos).x / *_windowWidth - 1.0f, -2.0f * (oldPos).y / *_windowHeight + 1.0f, originScreenSpace.z, 1.0f);
 
-	glm::mat4 invVpMat = glm::inverse(_projMat * _viewMat);
+	glm::mat4 invMvpMat = glm::inverse(_projMat * _viewMat);
 
-	glm::vec4 newPosObjSpace = invVpMat * newPosScreenSpace;
-	glm::vec4 oldPosObjSpace = invVpMat * oldPosScreenSpace;
+	glm::vec4 newPosObjSpace = invMvpMat * newPosScreenSpace;
+	glm::vec4 oldPosObjSpace = invMvpMat * oldPosScreenSpace;
 	newPosObjSpace /= newPosObjSpace.w;
 	oldPosObjSpace /= oldPosObjSpace.w;
 
@@ -124,6 +124,10 @@ void TransformVariable::updateTranslate(glm::ivec2 oldPos, glm::ivec2 newPos) {
 
 void TransformVariable::updateScale() {
 	_acScaleMat = glm::translate(_centerCoord) * glm::scale(glm::vec3(_acScale, _acScale, _acScale)) * glm::translate(-_centerCoord);
+}
+
+inline TransformVariable::TransformVariables(int*, int*, _worldPos)
+{
 }
 
 glm::mat4 TransformVariable::getMvpMat()
@@ -143,6 +147,10 @@ void TransformVariable::setViewMat(glm::mat4 viewMat) {
 
 void TransformVariable::addAcScale(float addValue) {
 	_acScale += addValue;
+}
+
+Parameters::Parameters()
+{
 }
 
 Parameters::Parameters(std::vector<glm::vec3> centerCoords, int* windowWidth, int* windowHeight)
@@ -184,8 +192,6 @@ glm::mat4 Parameters::getMvpMat(int index)
 	if (index >= 0 && index < _values.size()) {
 		return _values[index].getMvpMat();
 	}
-
-	return glm::mat4(0.0);
 }
 
 void Parameters::setProjMat(glm::mat4 projMat)

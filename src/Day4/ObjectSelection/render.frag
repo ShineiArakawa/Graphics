@@ -5,7 +5,7 @@ in vec2 f_texCoord;
 in vec3 f_positionCameraSpace;
 in vec3 f_normalCameraSpace;
 in vec3 f_lightPosCameraSpace;
-in float f_faceGroupID;
+flat in float f_faceGroupID;
 
 
 // Uniform Variables ====================================================
