@@ -18,11 +18,13 @@ include_directories(
     ${PROJECT_SOURCE_DIR}/lib/glad/include
     ${PROJECT_SOURCE_DIR}/lib/glm-0.9.9.8/glm
     ${PROJECT_SOURCE_DIR}/deps/glfw-3.3.7.bin.MACOS/include
+    ~/boost_1_79_0
 )
 
 link_directories(
     ${PROJECT_NAME}
     ${PROJECT_SOURCE_DIR}/deps/glfw-3.3.7.bin.MACOS/lib-x86_64
+    ~/boost_1_79_0/libs
 )
 
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)

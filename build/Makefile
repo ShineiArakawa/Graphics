@@ -549,6 +549,19 @@ ObjectSelection/fast:
 	$(MAKE) $(MAKESILENT) -f src/Day4/ObjectSelection/CMakeFiles/ObjectSelection.dir/build.make src/Day4/ObjectSelection/CMakeFiles/ObjectSelection.dir/build
 .PHONY : ObjectSelection/fast
 
+#=============================================================================
+# Target rules for targets named Final
+
+# Build rule for target.
+Final: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Final
+.PHONY : Final
+
+# fast build rule for target.
+Final/fast:
+	$(MAKE) $(MAKESILENT) -f src/Day4/Final/CMakeFiles/Final.dir/build.make src/Day4/Final/CMakeFiles/Final.dir/build
+.PHONY : Final/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -589,6 +602,7 @@ help:
 	@echo "... NightlyTest"
 	@echo "... NightlyUpdate"
 	@echo "... ArcBallControl"
+	@echo "... Final"
 	@echo "... KeyboardAndMouse"
 	@echo "... ObjectSelection"
 .PHONY : help

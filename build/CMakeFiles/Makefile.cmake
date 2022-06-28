@@ -13,6 +13,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "../src/CMakeLists.txt"
   "../src/Day4/ArcBallControl/CMakeLists.txt"
   "../src/Day4/CMakeLists.txt"
+  "../src/Day4/Final/CMakeLists.txt"
   "../src/Day4/KeyboardAndMouse/CMakeLists.txt"
   "../src/Day4/ObjectSelection/CMakeLists.txt"
   "/usr/local/Cellar/cmake/3.22.2/share/cmake/Modules/CMakeCXXInformation.cmake"
@@ -65,6 +66,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "src/Day4/ArcBallControl/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/Day4/KeyboardAndMouse/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/Day4/ObjectSelection/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/Day4/Final/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
@@ -100,4 +102,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "src/Day4/ArcBallControl/CMakeFiles/ArcBallControl.dir/DependInfo.cmake"
   "src/Day4/KeyboardAndMouse/CMakeFiles/KeyboardAndMouse.dir/DependInfo.cmake"
   "src/Day4/ObjectSelection/CMakeFiles/ObjectSelection.dir/DependInfo.cmake"
+  "src/Day4/Final/CMakeFiles/Final.dir/DependInfo.cmake"
   )

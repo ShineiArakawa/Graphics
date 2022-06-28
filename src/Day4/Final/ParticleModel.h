@@ -77,6 +77,7 @@ ParticleModel::ParticleModel(GLuint* programId, std::string filePath) {
 }
 
 void ParticleModel::_readFile(std::string filePath) {
+	std::cout << "filePath= " + filePath << std::endl;
 	std::ifstream file;
 	file.open(filePath, std::ios::in);
 	std::string line;
@@ -123,7 +124,7 @@ void ParticleModel::_readFile(std::string filePath) {
 		velocity.z = std::stof(tokens[6]);
 		_velocity.push_back(velocity);
 
-		float mass = 4.0f / 3.0f * M_PI * radius * radius * radius * RHO;
+		float mass = std::stof(tokens[7]);
 		_mass.push_back(mass);
 	}
 }

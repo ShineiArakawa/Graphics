@@ -1,17 +1,22 @@
 [
 {
   "directory": "/Users/shin/Github/Graphics/build/src/Day4/ArcBallControl",
-  "command": "/usr/bin/clang++  -I/Users/shin/Github/Graphics/Graphics -I/Users/shin/Github/Graphics/lib/glad/include -I/Users/shin/Github/Graphics/lib/glm-0.9.9.8/glm -I/Users/shin/Github/Graphics/deps/glfw-3.3.7.bin.MACOS/include -isystem /usr/local/include -std=c++17 -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -o CMakeFiles/ArcBallControl.dir/main.cpp.o -c /Users/shin/Github/Graphics/src/Day4/ArcBallControl/main.cpp",
+  "command": "/usr/bin/clang++  -I/Users/shin/Github/Graphics/Graphics -I/Users/shin/Github/Graphics/lib/glad/include -I/Users/shin/Github/Graphics/lib/glm-0.9.9.8/glm -I/Users/shin/Github/Graphics/deps/glfw-3.3.7.bin.MACOS/include -I/Users/shin/boost_1_79_0 -isystem /usr/local/include -std=c++17 -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -o CMakeFiles/ArcBallControl.dir/main.cpp.o -c /Users/shin/Github/Graphics/src/Day4/ArcBallControl/main.cpp",
   "file": "/Users/shin/Github/Graphics/src/Day4/ArcBallControl/main.cpp"
 },
 {
   "directory": "/Users/shin/Github/Graphics/build/src/Day4/KeyboardAndMouse",
-  "command": "/usr/bin/clang++  -I/Users/shin/Github/Graphics/Graphics -I/Users/shin/Github/Graphics/lib/glad/include -I/Users/shin/Github/Graphics/lib/glm-0.9.9.8/glm -I/Users/shin/Github/Graphics/deps/glfw-3.3.7.bin.MACOS/include -isystem /usr/local/include -std=c++17 -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -o CMakeFiles/KeyboardAndMouse.dir/main.cpp.o -c /Users/shin/Github/Graphics/src/Day4/KeyboardAndMouse/main.cpp",
+  "command": "/usr/bin/clang++  -I/Users/shin/Github/Graphics/Graphics -I/Users/shin/Github/Graphics/lib/glad/include -I/Users/shin/Github/Graphics/lib/glm-0.9.9.8/glm -I/Users/shin/Github/Graphics/deps/glfw-3.3.7.bin.MACOS/include -I/Users/shin/boost_1_79_0 -isystem /usr/local/include -std=c++17 -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -o CMakeFiles/KeyboardAndMouse.dir/main.cpp.o -c /Users/shin/Github/Graphics/src/Day4/KeyboardAndMouse/main.cpp",
   "file": "/Users/shin/Github/Graphics/src/Day4/KeyboardAndMouse/main.cpp"
 },
 {
   "directory": "/Users/shin/Github/Graphics/build/src/Day4/ObjectSelection",
-  "command": "/usr/bin/clang++  -I/Users/shin/Github/Graphics/Graphics -I/Users/shin/Github/Graphics/lib/glad/include -I/Users/shin/Github/Graphics/lib/glm-0.9.9.8/glm -I/Users/shin/Github/Graphics/deps/glfw-3.3.7.bin.MACOS/include -isystem /usr/local/include -std=c++17 -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -o CMakeFiles/ObjectSelection.dir/main.cpp.o -c /Users/shin/Github/Graphics/src/Day4/ObjectSelection/main.cpp",
+  "command": "/usr/bin/clang++  -I/Users/shin/Github/Graphics/Graphics -I/Users/shin/Github/Graphics/lib/glad/include -I/Users/shin/Github/Graphics/lib/glm-0.9.9.8/glm -I/Users/shin/Github/Graphics/deps/glfw-3.3.7.bin.MACOS/include -I/Users/shin/boost_1_79_0 -isystem /usr/local/include -std=c++17 -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -o CMakeFiles/ObjectSelection.dir/main.cpp.o -c /Users/shin/Github/Graphics/src/Day4/ObjectSelection/main.cpp",
   "file": "/Users/shin/Github/Graphics/src/Day4/ObjectSelection/main.cpp"
+},
+{
+  "directory": "/Users/shin/Github/Graphics/build/src/Day4/Final",
+  "command": "/usr/bin/clang++  -I/Users/shin/Github/Graphics/Graphics -I/Users/shin/Github/Graphics/lib/glad/include -I/Users/shin/Github/Graphics/lib/glm-0.9.9.8/glm -I/Users/shin/Github/Graphics/deps/glfw-3.3.7.bin.MACOS/include -I/Users/shin/boost_1_79_0 -isystem /usr/local/include -std=c++17 -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -o CMakeFiles/Final.dir/main.cpp.o -c /Users/shin/Github/Graphics/src/Day4/Final/main.cpp",
+  "file": "/Users/shin/Github/Graphics/src/Day4/Final/main.cpp"
 }
 ]

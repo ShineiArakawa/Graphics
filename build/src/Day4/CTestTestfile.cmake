@@ -7,3 +7,4 @@
 subdirs("ArcBallControl")
 subdirs("KeyboardAndMouse")
 subdirs("ObjectSelection")
+subdirs("Final")

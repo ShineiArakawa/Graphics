@@ -59,3 +59,9 @@
 /Users/shin/Github/Graphics/build/src/Day4/ObjectSelection/CMakeFiles/test.dir
 /Users/shin/Github/Graphics/build/src/Day4/ObjectSelection/CMakeFiles/edit_cache.dir
 /Users/shin/Github/Graphics/build/src/Day4/ObjectSelection/CMakeFiles/rebuild_cache.dir
+/Users/shin/Github/Graphics/build/src/Day4/Final/CMakeFiles/Final.dir
+/Users/shin/Github/Graphics/build/src/Day4/Final/CMakeFiles/package.dir
+/Users/shin/Github/Graphics/build/src/Day4/Final/CMakeFiles/package_source.dir
+/Users/shin/Github/Graphics/build/src/Day4/Final/CMakeFiles/test.dir
+/Users/shin/Github/Graphics/build/src/Day4/Final/CMakeFiles/edit_cache.dir
+/Users/shin/Github/Graphics/build/src/Day4/Final/CMakeFiles/rebuild_cache.dir
