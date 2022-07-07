@@ -38,16 +38,45 @@ static const float DISTANCE_OF_CUBES = 2;
 // 頂点クラス
 // Vertex class
 struct Vertex {
-	Vertex(const glm::vec3& position_, const glm::vec3& color_, float cubeID_)
+	Vertex(const glm::vec3& position_, const glm::vec3& color_)
 		: position(position_)
-		, color(color_)
-		, cubeID(cubeID_) {
+		, color(color_) {
 	}
 
 	glm::vec3 position;
 	glm::vec3 color;
-	float cubeID;
 };
+
+// clang-format off
+static const glm::vec3 positions[8] = {
+	glm::vec3(-1.0f, -1.0f, -1.0f),
+	glm::vec3(1.0f, -1.0f, -1.0f),
+	glm::vec3(-1.0f,  1.0f, -1.0f),
+	glm::vec3(-1.0f, -1.0f,  1.0f),
+	glm::vec3(1.0f,  1.0f, -1.0f),
+	glm::vec3(-1.0f,  1.0f,  1.0f),
+	glm::vec3(1.0f, -1.0f,  1.0f),
+	glm::vec3(1.0f,  1.0f,  1.0f)
+};
+
+static const glm::vec3 colors[6] = {
+	glm::vec3(1.0f, 0.0f, 0.0f),  // 赤
+	glm::vec3(0.0f, 1.0f, 0.0f),  // 緑
+	glm::vec3(0.0f, 0.0f, 1.0f),  // 青
+	glm::vec3(1.0f, 1.0f, 0.0f),  // イエロー
+	glm::vec3(0.0f, 1.0f, 1.0f),  // シアン
+	glm::vec3(1.0f, 0.0f, 1.0f),  // マゼンタ
+};
+
+static const unsigned int faces[12][3] = {
+	{ 7, 4, 1 }, { 7, 1, 6 },
+	{ 2, 4, 7 }, { 2, 7, 5 },
+	{ 5, 7, 6 }, { 5, 6, 3 },
+	{ 4, 2, 0 }, { 4, 0, 1 },
+	{ 3, 6, 1 }, { 3, 1, 0 },
+	{ 2, 5, 3 }, { 2, 3, 0 }
+};
+// clang-format on
 
 
 // シェーダのソースファイルをコンパイルする
