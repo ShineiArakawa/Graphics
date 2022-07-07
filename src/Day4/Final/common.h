@@ -32,7 +32,8 @@
 static std::string        VERT_SHADER_FILE = std::filesystem::current_path().string() + "/render.vert";
 static std::string        FRAG_SHADER_FILE = std::filesystem::current_path().string() + "/render.frag";
 static const std::string DATA_DIRECTORY = std::filesystem::current_path().string() + "/../../../data/12_2/";
-static const std::string PARTICLE_FILE_PATH = std::filesystem::current_path().string() + "/../../../data/particles.dat";
+// static const std::string PARTICLE_FILE_PATH = std::filesystem::current_path().string() + "/../../../data/particles.dat";
+static const std::string PARTICLE_FILE_PATH = "/Users/shin/Github/Graphics/data/particles.dat";
 
 static int WIN_WIDTH = 1000;                      // ウィンドウの幅 / Window width
 static int WIN_HEIGHT = 1000;                     // ウィンドウの高さ / Window height

@@ -60,7 +60,7 @@ void initializeGL() {
     projMat = glm::perspective(glm::radians(45.0f), (float)WIN_WIDTH / (float)WIN_HEIGHT, 0.1f, 1000.0f);
 
     viewMat = glm::lookAt(
-        glm::vec3(200.0f, 200.0f, 200.0f),   // 視点の位置 / Eye position
+        glm::vec3(20.0f, 20.0f, 20.0f),   // 視点の位置 / Eye position
         glm::vec3(0.0f, 0.0f, 0.0f),   // 見ている先 / Looking position
         glm::vec3(0.0f, 1.0f, 0.0f)    // 視界の上方向 / Upward vector
     );
