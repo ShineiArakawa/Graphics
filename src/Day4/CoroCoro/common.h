@@ -28,77 +28,66 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtx/transform.hpp>
 
+#define TINYOBJLOADER_IMPLEMENTATION
+#include "tiny_obj_loader.h"
 
-static std::string        VERT_SHADER_FILE = std::filesystem::current_path().string() + "/render.vert";
-static std::string        FRAG_SHADER_FILE = std::filesystem::current_path().string() + "/render.frag";
-static const std::string DATA_DIRECTORY = std::filesystem::current_path().string() + "/../../../data/12_2/";
-static const std::string PARTICLE_FILE_PATH = std::filesystem::current_path().string() + "/../../../data/particles.dat";
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
 
-static int WIN_WIDTH = 1000;                      // ウィンドウの幅 / Window width
-static int WIN_HEIGHT = 1000;                     // ウィンドウの高さ / Window height
-static const char* WIN_TITLE = "OpenGL Course";  // ウィンドウのタイトル / Window title
+static const std::string ROOT_DIR = std::filesystem::current_path().string();
+static const std::string DATA_DIRECTORY = ROOT_DIR + "/../../../data";
+
+static std::string        VERT_SHADER_FILE = ROOT_DIR + "/render.vert";
+static std::string        FRAG_SHADER_FILE = ROOT_DIR + "/render.frag";
+static const std::string MESH_FILE = DATA_DIRECTORY + "/baseWithHole3.obj";
+static const std::string BASE_TEX_FILE = DATA_DIRECTORY + "/wood.jpeg";
+static const std::string BACKGOUND_TEX_FILE = DATA_DIRECTORY + "/background.jpeg";
+static const std::string START_TEX_FILE = DATA_DIRECTORY + "/start.png";
+static const std::string CLEAR_TEX_FILE = DATA_DIRECTORY + "/clear.png";
+static const std::string GAME_OVER_TEX_FILE = DATA_DIRECTORY + "/gameOver.png";
+static const std::string TARGET_TEX_FILE = DATA_DIRECTORY + "/target.png";
+
+static const int STAGE_START = 100;
+static const int STAGE_PLAYING = 200;
+static const int STAGE_CLEAR = 300;
+static const int STAGE_GAME_OVER = 400;
+
+static int WIN_WIDTH = 2048;                      // ウィンドウの幅 / Window width
+static int WIN_HEIGHT = 2048;                     // ウィンドウの高さ / Window height
+static const char* WIN_TITLE = "Coro Coro";  // ウィンドウのタイトル / Window title
 static const int NUM_DIVISIONS_THETA = 100;
 static const int NUM_DIVISIONS_PHI = 100;
 static const int NUM_SPHERES_1D = 1;
 static const int DISTANCE_OF_SPHERES = 2.0;
-static const float RADIUS = 0.5f;
+static const float RADIUS = 0.4f;
+static const float COEFF_FOR_UV_COORDS = 5.0f;
+
 
 struct Vertex {
 	Vertex(
 		const glm::vec3& position_,
 		const glm::vec3& color_,
 		const glm::vec3& normal_,
+		const glm::vec2& uv_,
 		const float id_)
 		: position(position_)
 		, color(color_)
 		, normal(normal_)
+		, uv(uv_)
 		, id(id_) {
 	}
 
 	glm::vec3 position;
 	glm::vec3 color;
 	glm::vec3 normal;
+	glm::vec2 uv;
 	float id;
 };
 
-static const glm::vec3 positions_base[8] = {
-	glm::vec3(-5.0f, -0.1f, -5.0f) + glm::vec3(0.0, -0.6, 0.0),
-	glm::vec3(5.0f, -0.1f, -5.0f) + glm::vec3(0.0, -0.6, 0.0),
-	glm::vec3(-5.0f,  0.1f, -5.0f) + glm::vec3(0.0, -0.6, 0.0),
-	glm::vec3(-5.0f, -0.1f,  5.0f) + glm::vec3(0.0, -0.6, 0.0),
-	glm::vec3(5.0f,  0.1f, -5.0f) + glm::vec3(0.0, -0.6, 0.0),
-	glm::vec3(-5.0f,  0.1f,  5.0f) + glm::vec3(0.0, -0.6, 0.0),
-	glm::vec3(5.0f, -0.1f,  5.0f) + glm::vec3(0.0, -0.6, 0.0),
-	glm::vec3(5.0f,  0.1f,  5.0f) + glm::vec3(0.0, -0.6, 0.0)
-};
 
-static const glm::vec3 colors_base[6] = {
-	glm::vec3(1.0f, 0.0f, 0.0f),  // 赤
-	glm::vec3(0.0f, 1.0f, 0.0f),  // 緑
-	glm::vec3(0.0f, 0.0f, 1.0f),  // 青
-	glm::vec3(1.0f, 1.0f, 0.0f),  // イエロー
-	glm::vec3(0.0f, 1.0f, 1.0f),  // シアン
-	glm::vec3(1.0f, 0.0f, 1.0f),  // マゼンタ
-};
-
-static const unsigned int faces_base[12][3] = {
-	{ 7, 4, 1 }, { 7, 1, 6 },
-	{ 2, 4, 7 }, { 2, 7, 5 },
-	{ 5, 7, 6 }, { 5, 6, 3 },
-	{ 4, 2, 0 }, { 4, 0, 1 },
-	{ 3, 6, 1 }, { 3, 1, 0 },
-	{ 2, 5, 3 }, { 2, 3, 0 }
-};
-
-// シェーダのソースファイルをコンパイルする
-// Compile a shader source
 GLuint compileShader(const std::string& filename, GLuint type) {
-	// シェーダの作成
-	// Create a shader
 	GLuint shaderId = glCreateShader(type);
 
-	// ファイルの読み込み
-	// Load source file
 	std::ifstream reader;
 	std::string code;
 

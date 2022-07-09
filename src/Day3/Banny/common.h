@@ -9,6 +9,7 @@
 
 static const char* SOURCE_DIRECTORY = "D:/Github/Graphics/src/Day3/Banny/";
 static const char* SHADER_DIRECTORY = "D:/Github/Graphics/src/Day3/Banny/";
-static const char* DATA_DIRECTORY = "D:/Github/Graphics/data/12_3/";
+//static const char* DATA_DIRECTORY = "D:/Github/Graphics/data/12_3/";
+static const char* DATA_DIRECTORY = "D:/Github/Graphics/data/";
 
 #endif  // _COMMON_H_
